@@ -41,7 +41,7 @@ public class CustomerController {
 	/**
 	 *  客户列表
 	 */
-	@RequestMapping(value = "/customer/list.action")
+	@RequestMapping(value = "/customer/list")
 	public String list(@RequestParam(defaultValue="1")Integer page,
 			@RequestParam(defaultValue="10")Integer rows, 
 			String custName, String custSource, String custIndustry,
@@ -74,7 +74,7 @@ public class CustomerController {
 	/**
 	 * 创建客户
 	 */
-	@RequestMapping("/customer/create.action")
+	@RequestMapping("/customer/create")
 	@ResponseBody
 	public String customerCreate(Customer customer,HttpSession session) {
 	    // 获取Session中的当前用户信息
@@ -98,7 +98,7 @@ public class CustomerController {
 	/**
 	 * 通过id获取客户信息
 	 */
-	@RequestMapping("/customer/getCustomerById.action")
+	@RequestMapping("/customer/getCustomerById")
 	@ResponseBody
 	public Customer getCustomerById(Integer id) {
 	    Customer customer = customerService.getCustomerById(id);
@@ -107,7 +107,7 @@ public class CustomerController {
 	/**
 	 * 更新客户
 	 */
-	@RequestMapping("/customer/update.action")
+	@RequestMapping("/customer/update")
 	@ResponseBody
 	public String customerUpdate(Customer customer) {
 	    int rows = customerService.updateCustomer(customer);
@@ -121,7 +121,7 @@ public class CustomerController {
 	/**
 	 * 删除客户
 	 */
-	@RequestMapping("/customer/delete.action")
+	@RequestMapping("/customer/delete")
 	@ResponseBody
 	public String customerDelete(Integer id) {
 	    int rows = customerService.deleteCustomer(id);

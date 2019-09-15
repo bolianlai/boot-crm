@@ -21,7 +21,7 @@ public class UserController {
     /**
      * 用户登录
      */
-    @RequestMapping(value = "/login.action", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(String usercode,String password, Model model,
                         HttpSession session) {
         // 通过账号和密码查询用户
@@ -31,7 +31,7 @@ public class UserController {
             session.setAttribute("USER_SESSION", user);
             // 跳转到主页面
 //			return "customer";
-            return "redirect:customer/list.action";
+            return "redirect:customer/list";
         }
         model.addAttribute("msg", "账号或密码错误，请重新输入！");
         // 返回到登录页面
@@ -41,7 +41,7 @@ public class UserController {
     /**
      * 模拟其他类中跳转到客户管理页面的方法
      */
-    @RequestMapping(value = "/toCustomer.action")
+    @RequestMapping(value = "/toCustomer")
     public String toCustomer() {
         return "customer";
     }
@@ -49,17 +49,17 @@ public class UserController {
     /**
      * 退出登录
      */
-    @RequestMapping(value = "/logout.action")
+    @RequestMapping(value = "/logout")
     public String logout(HttpSession session) {
         // 清除Session
         session.invalidate();
         // 重定向到登录页面的跳转方法
-        return "redirect:login.action";
+        return "redirect:login";
     }
     /**
      * 向用户登陆页面跳转
      */
-    @RequestMapping(value = "/login.action", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String toLogin() {
         return "login";
     }
